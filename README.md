@@ -24,7 +24,6 @@ Built and maintained by Oscar, UX designer.
 | `transitions.md` | Page and overlay transition patterns |
 | `grammar-and-style.md` | Voice, tone, and A–Z copy rules |
 | `styleguide.md` | Living style guide page structure |
-| `TODO.md` | What to fill in before building starts |
 
 ---
 
@@ -41,8 +40,8 @@ Built and maintained by Oscar, UX designer.
 ## How to use
 
 1. Clone the repo into your new project's Obsidian vault or docs folder
-2. Open `TODO.md` — work through what needs updating for your project
-3. Update `tokens.md` with your colors, fonts, and radius
+2. Update `tokens.md` with your colors, fonts, and radius
+3. Adjust any other files that differ from your project's needs
 4. Read `_ai-guide.md` before starting to build
 
 ---

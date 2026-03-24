@@ -49,7 +49,7 @@ Named tokens that map to foundational tokens. Use these at layout level — betw
 :root {
   /* Horizontal — elements next to each other */
   --spacing-between-cards:     var(--size-12); /* gap between card components */
-  --spacing-between-chips:     var(--size-8);  /* gap between chip/tag elements */
+  --spacing-between-chips:     var(--size-4);  /* gap between chip/tag elements */
   --spacing-screen-edge:       var(--size-24); /* page edge padding on mobile */
   --spacing-component-default: var(--size-16); /* fallback between components */
 
@@ -67,7 +67,7 @@ Named tokens that map to foundational tokens. Use these at layout level — betw
 | Token | Value | Usage |
 |-------|-------|-------|
 | `--spacing-between-cards` | 12px | Gap between card components |
-| `--spacing-between-chips` | 8px | Gap between chips, tags |
+| `--spacing-between-chips` | 4px | Gap between chips, tags |
 | `--spacing-screen-edge` | 24px | Page edge padding on mobile |
 | `--spacing-component-default` | 16px | Fallback when no specific token fits |
 

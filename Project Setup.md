@@ -79,7 +79,7 @@ Master index — points AI in the correct reading order:
 2. `grid.md` — column system, breakpoints, rules
 3. `typography.md` — Heading/Text/Eyebrow components
 4. `spacing.md` — 4px grid, allowed values
-5. `icons.md` — lucide-react, sizes, usage
+5. `icons.md` — `@phosphor-icons/react`, sizes, usage
 6. `animations.md` — motion and transitions
 7. `grammar-and-style.md` — voice, tone, copy rules
 8. `components.md` — shadcn patterns, CVA structure

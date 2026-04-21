@@ -2,7 +2,7 @@
 
 A design foundation for building consistent, well-documented Next.js projects. Clone this as a starting point — update the tokens, adjust what differs, and start building.
 
-Built and maintained by Oscar, UX designer.
+Built and maintained as a reusable design foundation.
 
 ---
 

@@ -4,7 +4,7 @@
 
 A Next.js project for personal use — a portfolio site but also a place to build and test views.
 
-Oscar is a UX designer and usability is a top priority. Design should feel light and frictionless. Everything should exist for a reason — no unnecessary content or noise that distracts the user.
+The master is a UX designer and usability is a top priority. Design should feel light and frictionless. Everything should exist for a reason — no unnecessary content or noise that distracts the user.
 
 ## Design Philosophy
 
@@ -131,4 +131,4 @@ A living style guide at `/style-guide` documents every component and block as it
 | Arbitrary spacing `p-[13px]` | Nearest 4px step |
 | `@base-ui/react` primitives | `@radix-ui/react-*` always |
 | Raw `<h1>` with manual classes | `<Heading size="h1">` component |
-| Guess which component to use | Ask Oscar |
+| Guess which component to use | Ask the master |

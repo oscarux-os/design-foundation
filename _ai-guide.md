@@ -24,7 +24,7 @@ Before building a new page, component, or section — read the relevant files in
 
 ## When in doubt
 
-If you are unsure which component to use, which layout pattern fits, or how something should be built — **ask Oscar before writing any code.** Don't guess and don't improvise. A quick question is always better than building the wrong thing.
+If you are unsure which component to use, which layout pattern fits, or how something should be built — **ask the master before writing any code.** Don't guess and don't improvise. A quick question is always better than building the wrong thing.
 
 ---
 
@@ -51,7 +51,7 @@ If you are unsure which component to use, which layout pattern fits, or how some
 | Text | `typography.md` | `<Heading>`, `<Text>`, `<Eyebrow>` via cva |
 | Spacing | `spacing.md` | Semantic tokens for layout, padding patterns for content |
 | Radius | `radius.md` | Token-based, no arbitrary values |
-| Icons | `icons.md` | Phosphor, sizes 16/24/48/64/96 |
+| Icons | `icons.md` | `@phosphor-icons/react`, sizes 16/24/48/64/96 |
 | Motion | `motion.md` | Snappy, fluid, intuitive principles |
 | Transitions | `transitions.md` | State changes, route transitions |
 | Copy | `grammar-and-style.md` | Voice, tone, UI copy rules |

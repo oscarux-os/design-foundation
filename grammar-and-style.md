@@ -62,7 +62,7 @@ Short, scannable, action-oriented.
 | Term | Rule | ✅ Do | ❌ Don't |
 |------|------|-------|---------|
 | **Acronyms** | Don't use an acronym unless it's commonly used, and spelling it out causes more confusion. | PDF | Portable document format |
-| **Active voice** | Use active voice. The subject does the action — it's clearer and more direct. | Oscar designed the system | The system was designed by Oscar |
+| **Active voice** | Use active voice. The subject does the action — it's clearer and more direct. | The team designed the system | The system was designed by the team |
 | **Ampersands** | Don't use &. Write "and" instead, unless the ampersand is part of a brand name. | Design and code | Design & code |
 
 ---

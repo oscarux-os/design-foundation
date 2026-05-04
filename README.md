@@ -11,10 +11,11 @@ Built and maintained as a reusable design foundation.
 | File | Purpose |
 |------|---------|
 | `CLAUDE.md` | AI context — loaded automatically by Claude Code |
+| `DESIGN.md` | Machine-readable token snapshot — single source of truth for all values |
 | `_ai-guide.md` | Reading order for AI before building anything |
 | `The idea.md` | Vision, stack, and key rules |
 | `Project Setup.md` | Full build order and Figma connection guide |
-| `tokens.md` | Design tokens — colors, fonts, radius, tracking |
+| `tokens.md` | Color token structure, Tailwind mapping, and allowed classes |
 | `grid.md` | Responsive 12-column grid system |
 | `typography.md` | Heading, Text, Eyebrow components + font setup |
 | `spacing.md` | Two-layer spacing — semantic tokens + padding patterns |
@@ -39,13 +40,25 @@ Built and maintained as a reusable design foundation.
 
 ## How to use
 
-1. Clone the repo into your new project's Obsidian vault or docs folder
-2. Update `tokens.md` with your colors, fonts, and radius
-3. Adjust any other files that differ from your project's needs
-4. Read `_ai-guide.md` before starting to build
+1. Clone the repo into your new project's docs folder
+2. Update token values in `DESIGN.md` (YAML front matter) for your project's colors, radius, and spacing
+3. Copy the updated values into `app/globals.css` in your Next.js project
+4. Adjust any rationale docs that differ from your project's needs
+5. Read `DESIGN.md` and then `_ai-guide.md` before starting to build
+
+---
+
+## Token update workflow
+
+All token values live in `DESIGN.md` — it is the single source of truth. The per-concern docs (`tokens.md`, `radius.md`, `typography.md`, `spacing.md`) document structure and rationale but do not repeat values.
+
+```
+Change a token value  →  edit DESIGN.md YAML  →  copy to globals.css
+Change a rule/rationale  →  edit the specific .md doc
+```
 
 ---
 
 ## AI guidance
 
-This foundation is built to work with [Claude Code](https://claude.ai/claude-code). `CLAUDE.md` is picked up automatically and points to `_ai-guide.md`, which tells the AI what to read and in what order before building anything.
+This foundation is built to work with [Claude Code](https://claude.ai/claude-code). `CLAUDE.md` is picked up automatically — it points to `DESIGN.md` first (complete token snapshot) and then `_ai-guide.md` for the full reading order.

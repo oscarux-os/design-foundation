@@ -47,7 +47,7 @@ All components live in `components/ui/`. Always import from there.
 
 All colors, fonts, radius, and tracking are defined in `app/globals.css` as CSS custom properties. **This is the only place they are defined.** Never touch component files to change them.
 
-Current theme: green-tinted (oklch hue 138), full light and dark mode. See `tokens.md` for the complete setup.
+Current theme: green-tinted (oklch hue 138), full light and dark mode. See `DESIGN.md` for all token values and `tokens.md` for the CSS structure.
 
 Always use Tailwind token classes in components:
 
@@ -63,7 +63,7 @@ ring-ring                — focus rings
 text-destructive         — error states
 ```
 
-Never hardcode colors. See `tokens.md` for the full reference.
+Never hardcode colors. See `DESIGN.md` for all token values and `tokens.md` for allowed Tailwind classes.
 
 ### Fonts
 

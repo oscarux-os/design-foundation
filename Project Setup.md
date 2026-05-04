@@ -18,7 +18,7 @@ npx shadcn@latest init
 
 Write all CSS custom properties in `app/globals.css`. This is the foundation for everything — Tailwind, Figma, and Code Connect all start here.
 
-See `tokens.md` for exact values and structure.
+Get all token values from `DESIGN.md` (YAML front matter). See `tokens.md` for the CSS structure to paste them into.
 
 ### 3. Configure grid and spacing
 
@@ -69,22 +69,23 @@ See the **Code Connect Integration** section below.
 
 ## AI Guidance System (the MD files)
 
-The project uses a collection of MD files that guide AI in the right direction when building pages and components. Always start with `_ai-guide.md`.
+The project uses a collection of MD files that guide AI in the right direction when building pages and components.
 
-### File: `_ai-guide.md`
+### Reading order
 
-Master index — points AI in the correct reading order:
-
-1. `tokens.md` — design tokens (CSS variables → Tailwind → Figma)
+0. `DESIGN.md` — complete token snapshot (all values in YAML). Read this first.
+1. `tokens.md` — CSS structure, Tailwind mapping, allowed classes
 2. `grid.md` — column system, breakpoints, rules
 3. `typography.md` — Heading/Text/Eyebrow components
-4. `spacing.md` — 4px grid, allowed values
-5. `icons.md` — `@phosphor-icons/react`, sizes, usage
-6. `animations.md` — motion and transitions
-7. `grammar-and-style.md` — voice, tone, copy rules
-8. `components.md` — shadcn patterns, CVA structure
+4. `spacing.md` — 4px grid, semantic tokens, padding patterns
+5. `radius.md` — responsive radius scale, per-component values
+6. `icons.md` — `@phosphor-icons/react`, sizes, usage
+7. `motion.md` — motion principles (snappy, fluid, intuitive)
+8. `transitions.md` — page and overlay transition patterns
+9. `grammar-and-style.md` — voice, tone, copy rules
+10. `styleguide.md` — `/style-guide` route, components + blocks tabs
 
-**Rule:** Before building a new page or component — read `_ai-guide.md` and the relevant sub-files.
+**Rule:** Before building a new page or component — read `DESIGN.md` and `_ai-guide.md`, then the relevant sub-files.
 
 ---
 
@@ -177,17 +178,3 @@ Run this after every new component or prop change.
 
 ---
 
-## Files to create
-
-| File | Type | Purpose |
-|------|------|---------|
-| `The idea.md` | Updated | Vision and technical reference |
-| `Project Setup.md` | New | Master plan + connections |
-| `_ai-guide.md` | New | AI index, reading order |
-| `tokens.md` | New | Design tokens reference |
-| `grid.md` | New | Grid system and breakpoints |
-| `typography.md` | New | Typography components and rules |
-| `spacing.md` | New | Spacing scale and rules |
-| `icons.md` | New | Icon library and usage rules |
-| `animations.md` | New | Motion and transition patterns |
-| `grammar-and-style.md` | New | Voice, tone, and copy rules |

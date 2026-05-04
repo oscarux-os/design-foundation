@@ -2,6 +2,8 @@
 
 Two separate layers. They don't interfere with each other.
 
+> **Values are defined in `DESIGN.md`** (YAML — `spacing`). When you change a spacing value, update `DESIGN.md` first, then update `app/globals.css`.
+
 **Contents:** [Two layers](#two-layers) · [Foundational tokens](#foundational-tokens) · [Semantic tokens](#semantic-tokens) · [Padding patterns](#padding-patterns) · [Tailwind integration](#tailwind-integration) · [Component spacing](#component-spacing) · [Rules](#rules)
 
 ---
@@ -19,23 +21,23 @@ Never use semantic tokens inside components. Never use arbitrary values at eithe
 
 ## Foundational tokens
 
-Defined in `app/globals.css`. The number in the token name is the px value — no translation needed.
+Defined in `app/globals.css`. The number in the token name is the px value — no translation needed. Values are standard 4px-grid rem equivalents (e.g. `--size-16` = 1rem = 16px).
 
 ```css
 :root {
-  /* Foundational spacing tokens */
-  --size-4:   0.25rem;  /*  4px */
-  --size-8:   0.5rem;   /*  8px */
-  --size-12:  0.75rem;  /* 12px */
-  --size-16:  1rem;     /* 16px */
-  --size-24:  1.5rem;   /* 24px */
-  --size-32:  2rem;     /* 32px */
-  --size-40:  2.5rem;   /* 40px */
-  --size-48:  3rem;     /* 48px */
-  --size-64:  4rem;     /* 64px */
-  --size-80:  5rem;     /* 80px */
-  --size-96:  6rem;     /* 96px */
-  --size-128: 8rem;     /* 128px */
+  /* Foundational spacing tokens — 4px grid */
+  --size-4:   ;
+  --size-8:   ;
+  --size-12:  ;
+  --size-16:  ;
+  --size-24:  ;
+  --size-32:  ;
+  --size-40:  ;
+  --size-48:  ;
+  --size-64:  ;
+  --size-80:  ;
+  --size-96:  ;
+  --size-128: ;
 }
 ```
 
@@ -62,24 +64,26 @@ Named tokens that map to foundational tokens. Use these at layout level — betw
 }
 ```
 
+Values from `DESIGN.md → spacing`.
+
 ### Horizontal reference
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--spacing-between-cards` | 12px | Gap between card components |
-| `--spacing-between-chips` | 4px | Gap between chips, tags |
-| `--spacing-screen-edge` | 24px | Page edge padding on mobile |
-| `--spacing-component-default` | 16px | Fallback when no specific token fits |
+| Token | Usage |
+|-------|-------|
+| `--spacing-between-cards` | Gap between card components |
+| `--spacing-between-chips` | Gap between chips, tags |
+| `--spacing-screen-edge` | Page edge padding on mobile |
+| `--spacing-component-default` | Fallback when no specific token fits |
 
 ### Vertical reference
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--spacing-between-text` | 8px | Paragraph to paragraph |
-| `--spacing-text-to-component` | 16px | Text block to any component below |
-| `--spacing-content-to-button` | 24px | Content or form to CTA button |
-| `--spacing-between-sections` | 48px | Between major page sections |
-| `--spacing-hero` | 96px | Hero and top-of-page breathing room |
+| Token | Usage |
+|-------|-------|
+| `--spacing-between-text` | Paragraph to paragraph |
+| `--spacing-text-to-component` | Text block to any component below |
+| `--spacing-content-to-button` | Content or form to CTA button |
+| `--spacing-between-sections` | Between major page sections |
+| `--spacing-hero` | Hero and top-of-page breathing room |
 
 ---
 

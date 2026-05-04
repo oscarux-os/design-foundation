@@ -8,7 +8,8 @@ Read this document FIRST before building anything. It points you in the right or
 
 Before building a new page, component, or section — read the relevant files in this order:
 
-1. **`tokens.md`** — Which colors and CSS variables exist. Without this you don't know which classes are allowed.
+0. **`DESIGN.md`** — Complete machine-readable token snapshot in one file (YAML front matter). Read this first. It gives you all current values for colors, typography, radius, spacing, and component tokens without opening any other file. The sections below it also provide a concise overview of the full system.
+1. **`tokens.md`** — CSS structure and Tailwind mapping for colors. Shows which classes are allowed.
 2. **`grid.md`** — How columns and breakpoints work. All layouts start here.
 3. **`typography.md`** — Which typography components exist and how to use them. No raw `<h1>` tags.
 4. **`spacing.md`** — Two-layer spacing system: semantic tokens for layout, padding patterns for inner content.
@@ -46,7 +47,8 @@ If you are unsure which component to use, which layout pattern fits, or how some
 
 | Category | File | Key info |
 |----------|------|----------|
-| Colors | `tokens.md` | CSS custom properties in `globals.css` |
+| **All token values** | `DESIGN.md` | YAML front matter — single source of truth for values |
+| Colors | `tokens.md` | CSS structure, Tailwind mapping, allowed classes |
 | Layout | `grid.md` | 12-col desktop, 6-col mobile, gap-5 |
 | Text | `typography.md` | `<Heading>`, `<Text>`, `<Eyebrow>` via cva |
 | Spacing | `spacing.md` | Semantic tokens for layout, padding patterns for content |

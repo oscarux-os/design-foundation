@@ -16,9 +16,9 @@ This repo is a design foundation — the tokens, grid, typography rules and styl
 
 - **Project name & purpose** — update the intro at the top of this file.
 - **Fonts** — heading / body / mono families → `typography.md`.
-- **Base colors** — brand/primary, background, foreground, accent → `tokens.md`.
-- **Radius scale** — tight / default / rounded preferences → `radius.md`.
-- **Spacing preferences** — any deviations from the 4px grid defaults → `spacing.md`.
+- **Base colors** — brand/primary, background, foreground, accent → `DESIGN.md` (colors + colors-dark), then `tokens.md` for CSS structure.
+- **Radius scale** — tight / default / rounded preferences → `DESIGN.md` (rounded + rounded-desktop), then `radius.md` for per-component usage.
+- **Spacing preferences** — any deviations from the 4px grid defaults → `DESIGN.md` (spacing), then `spacing.md` for semantic token usage.
 - **Icon library** — default is `@phosphor-icons/react` (see `icons.md`); confirm before swapping.
 - **Breakpoint targets** — any non-standard device targets → `grid.md`.
 
@@ -30,7 +30,9 @@ If unsure which component to use or how something should be built — ask the ma
 
 ## Before building anything
 
-Read `_ai-guide.md` — it points you in the right order.
+Read `DESIGN.md` first — it has the complete token snapshot (all color, typography, radius, spacing, and component values) in machine-readable YAML. Then read `_ai-guide.md` for the full reading order and rationale docs.
+
+**When a token value changes:** update `DESIGN.md` (YAML front matter) first, then update `app/globals.css`. The per-concern docs (`tokens.md`, `radius.md`, `typography.md`, `spacing.md`) document structure and rationale — they do not repeat values.
 
 ## Highlighted text
 

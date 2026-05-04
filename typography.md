@@ -2,6 +2,8 @@
 
 All text in pages and components is built with `<Heading>`, `<Text>`, and `<Eyebrow>`. No raw HTML tags with manual class names.
 
+> **Values are defined in `DESIGN.md`** (YAML — `typography`). When you change a type value (font size, weight, line height), update `DESIGN.md` first, then update the component implementation.
+
 **Contents:** [Fonts](#fonts) · [Display scale](#display-scale) · [Heading](#heading) · [Text](#text) · [Eyebrow](#eyebrow) · [Rules](#rules) · [Figma mapping](#figma-mapping)
 
 ---
@@ -51,14 +53,16 @@ Bold, uppercase, tight leading — for heroes and large marketing moments. All s
 <Heading size="display-sm">Display Small</Heading>
 ```
 
-| Size | Font-size | Weight | Line height | Letter spacing | Case |
-|------|-----------|--------|-------------|----------------|------|
-| `display-hero` | `clamp(3rem, 9vw, 6rem)` | Bold | 0.85 | +2% | Uppercase |
-| `display-lg` | `clamp(2rem, 6vw, 4rem)` | Bold | 0.85 | +1.5% | Uppercase |
-| `display-md` | `clamp(1.5rem, 4vw, 2.5rem)` | Bold | 0.85 | +1.5% | Uppercase |
-| `display-sm` | `clamp(1.25rem, 3vw, 2rem)` | Bold | 0.85 | +1.5% | Uppercase |
+Values from `DESIGN.md → typography`. All display sizes are fluid via `clamp()`.
 
-All display: `font-bold leading-[0.85] tracking-[0.02em / 0.015em] uppercase` — never override these per-instance.
+| Size | Weight | Line height | Letter spacing | Case |
+|------|--------|-------------|----------------|------|
+| `display-hero` | Bold | 0.85 | wider | Uppercase |
+| `display-lg` | Bold | 0.85 | wide | Uppercase |
+| `display-md` | Bold | 0.85 | wide | Uppercase |
+| `display-sm` | Bold | 0.85 | wide | Uppercase |
+
+All display: `font-bold leading-[0.85] uppercase` — never override these per-instance.
 
 ---
 
@@ -73,12 +77,14 @@ Editorial headings for page structure. Normal weight, tight tracking.
 <Heading size="h4">Card Title</Heading>
 ```
 
-| Size | Font-size | Rendering |
-|------|-----------|-----------|
-| `h1` | `clamp(2rem, 5vw, 3.5rem)` | Fluid, inline style |
-| `h2` | `text-3xl` (1.875rem) | Tailwind class |
-| `h3` | `text-2xl` (1.5rem) | Tailwind class |
-| `h4` | `text-xl` (1.25rem) | Tailwind class |
+Values from `DESIGN.md → typography`. h1 is fluid via `clamp()`, h2–h4 use fixed Tailwind classes.
+
+| Size | Rendering |
+|------|-----------|
+| `h1` | Fluid, inline style |
+| `h2` | `text-3xl` |
+| `h3` | `text-2xl` |
+| `h4` | `text-xl` |
 
 All heading: `font-normal text-foreground tracking-tight`
 

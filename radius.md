@@ -2,35 +2,35 @@
 
 Rounded corners scale responsively — tighter on mobile, more expressive on desktop. Defined as CSS custom properties that switch at the `md` breakpoint automatically.
 
+> **Values are defined in `DESIGN.md`** (YAML — `rounded` for mobile, `rounded-desktop` for 768px+). When you change a radius value, update `DESIGN.md` first, then copy the new value into `app/globals.css`.
+
 **Contents:** [Token](#token) · [Scale](#scale) · [Per component](#per-component) · [Rules](#rules)
 
 ---
 
 ## Token
 
-Defined in `app/globals.css`. Mobile values are default, desktop values override at `768px`.
+Defined in `app/globals.css`. Mobile values are default, desktop values override at `768px`. Fill values from `DESIGN.md`.
 
 ```css
 :root {
-  /* Mobile radius scale */
-  --radius-sm:  0.625rem; /* 10px */
-  --radius-md:  1rem;     /* 16px */
-  --radius-lg:  1.5rem;   /* 24px */
-  --radius-xl:  2rem;     /* 32px */
-  --radius-2xl: 3rem;     /* 48px */
-
-  /* Input stays consistent across breakpoints */
-  --radius-input: 0.75rem; /* 12px */
+  /* Mobile — values from DESIGN.md → rounded */
+  --radius-sm:    ;
+  --radius-md:    ;
+  --radius-lg:    ;
+  --radius-xl:    ;
+  --radius-2xl:   ;
+  --radius-input: ; /* fixed — does not change at desktop */
 }
 
 @media (min-width: 768px) {
   :root {
-    /* Desktop radius scale */
-    --radius-sm:  1rem;     /* 16px */
-    --radius-md:  1.25rem;  /* 20px */
-    --radius-lg:  1.875rem; /* 30px */
-    --radius-xl:  2.5rem;   /* 40px */
-    --radius-2xl: 3.75rem;  /* 60px */
+    /* Desktop — values from DESIGN.md → rounded-desktop */
+    --radius-sm:  ;
+    --radius-md:  ;
+    --radius-lg:  ;
+    --radius-xl:  ;
+    --radius-2xl: ;
   }
 }
 ```
@@ -49,21 +49,21 @@ Map to Tailwind in `@theme inline`:
 }
 ```
 
-> Note: update `tokens.md` `@theme inline` block to replace the old radius entries with these.
-
 ---
 
 ## Scale
 
-| Token | Mobile | Desktop | Tailwind class |
-|-------|--------|---------|----------------|
-| `--radius-sm` | 10px | 16px | `rounded-sm` |
-| `--radius-md` | 16px | 20px | `rounded-md` |
-| `--radius-lg` | 24px | 30px | `rounded-lg` |
-| `--radius-xl` | 32px | 40px | `rounded-xl` |
-| `--radius-2xl` | 48px | 60px | `rounded-2xl` |
-| `--radius-input` | 12px | 12px | `rounded-input` |
-| — | — | — | `rounded-full` |
+Values from `DESIGN.md → rounded` (mobile) and `rounded-desktop` (768px+).
+
+| Token | Tailwind class |
+|-------|----------------|
+| `--radius-sm` | `rounded-sm` |
+| `--radius-md` | `rounded-md` |
+| `--radius-lg` | `rounded-lg` |
+| `--radius-xl` | `rounded-xl` |
+| `--radius-2xl` | `rounded-2xl` |
+| `--radius-input` | `rounded-input` |
+| — | `rounded-full` |
 
 ---
 

@@ -1,5 +1,7 @@
 # Tokens — oh.design
 
+> **Values are defined in `DESIGN.md`** (YAML front matter — `colors` and `colors-dark`). This file documents the CSS structure, Tailwind mapping, and usage rules. When you change a color value, update `DESIGN.md` first, then copy the new value into `app/globals.css`.
+
 Design tokens are defined as CSS custom properties in `app/globals.css`. Tailwind maps these automatically via `@theme inline`. This is the only place colors, fonts, radius, and tracking are defined.
 
 **Contents:** [globals.css](#globalscss) · [Allowed classes](#allowed-tailwind-classes) · [Rules](#rules) · [Figma mapping](#figma-mapping)
@@ -12,55 +14,58 @@ Paste this into `app/globals.css` in full. Three blocks in order: variables, the
 
 ### 1. CSS custom properties
 
+Fill values from `DESIGN.md` → `colors` (light) and `colors-dark` (dark).
+
 ```css
 :root {
-  /* Light mode */
-  --background: oklch(0.94 0.022 138);
-  --foreground: oklch(0.13 0.05 138);
-  --card: oklch(0.99 0.004 138);
-  --card-foreground: oklch(0.15 0.05 138);
-  --popover: oklch(0.99 0.004 138);
-  --popover-foreground: oklch(0.15 0.05 138);
-  --primary: oklch(0.38 0.22 138);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.89 0.06 138);
-  --secondary-foreground: oklch(0.22 0.08 138);
-  --muted: oklch(0.91 0.018 138);
-  --muted-foreground: oklch(0.44 0.08 138);
-  --accent: oklch(0.87 0.07 138);
-  --accent-foreground: oklch(0.20 0.08 138);
-  --destructive: oklch(0.52 0.20 30.74);
-  --border: oklch(0.74 0.07 138);
-  --input: oklch(0.74 0.07 138);
-  --ring: oklch(0.46 0.20 138);
+  /* Light mode — values from DESIGN.md → colors */
+  --background: ;
+  --foreground: ;
+  --card: ;
+  --card-foreground: ;
+  --popover: ;
+  --popover-foreground: ;
+  --primary: ;
+  --primary-foreground: ;
+  --secondary: ;
+  --secondary-foreground: ;
+  --muted: ;
+  --muted-foreground: ;
+  --accent: ;
+  --accent-foreground: ;
+  --destructive: ;
+  --border: ;
+  --input: ;
+  --ring: ;
 
   --font-sans: Inter, sans-serif;
   --font-mono: IBM Plex Mono, monospace;
 
   --tracking-normal: -0.025em;
 
-  /* Radius tokens — see radius.md for full responsive scale */
+  /* Radius tokens — values from DESIGN.md → rounded / rounded-desktop */
 }
 
 .dark {
-  --background: oklch(0.14 0.02 138);
-  --foreground: oklch(0.97 0.02 138);
-  --card: oklch(0.18 0.02 138);
-  --card-foreground: oklch(0.96 0.02 138);
-  --popover: oklch(0.18 0.02 138);
-  --popover-foreground: oklch(0.97 0.02 138);
-  --primary: oklch(0.75 0.20 138);
-  --primary-foreground: oklch(0.12 0.04 138);
-  --secondary: oklch(0.22 0.06 138);
-  --secondary-foreground: oklch(0.75 0.18 138);
-  --muted: oklch(0.24 0.03 138);
-  --muted-foreground: oklch(0.65 0.06 138);
-  --accent: oklch(0.28 0.08 138);
-  --accent-foreground: oklch(0.95 0.04 138);
-  --destructive: oklch(0.51 0.21 27.50);
-  --border: oklch(0.28 0.05 138);
-  --input: oklch(0.32 0.05 138);
-  --ring: oklch(0.60 0.18 138);
+  /* Dark mode — values from DESIGN.md → colors-dark */
+  --background: ;
+  --foreground: ;
+  --card: ;
+  --card-foreground: ;
+  --popover: ;
+  --popover-foreground: ;
+  --primary: ;
+  --primary-foreground: ;
+  --secondary: ;
+  --secondary-foreground: ;
+  --muted: ;
+  --muted-foreground: ;
+  --accent: ;
+  --accent-foreground: ;
+  --destructive: ;
+  --border: ;
+  --input: ;
+  --ring: ;
 }
 ```
 

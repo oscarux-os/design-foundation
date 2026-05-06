@@ -12,7 +12,7 @@ Built and maintained as a reusable design foundation.
 |------|---------|
 | `CLAUDE.md` | AI context — loaded automatically by Claude Code |
 | `DESIGN.md` | Machine-readable token snapshot — single source of truth for all values |
-| `_ai-guide.md` | Reading order for AI before building anything |
+| `AGENTS.md` | Reading order for AI before building anything |
 | `The idea.md` | Vision, stack, and key rules |
 | `Project Setup.md` | Full build order and Figma connection guide |
 | `tokens.md` | Color token structure, Tailwind mapping, and allowed classes |
@@ -44,7 +44,7 @@ Built and maintained as a reusable design foundation.
 2. Update token values in `DESIGN.md` (YAML front matter) for your project's colors, radius, and spacing
 3. Copy the updated values into `app/globals.css` in your Next.js project
 4. Adjust any rationale docs that differ from your project's needs
-5. Read `DESIGN.md` and then `_ai-guide.md` before starting to build
+5. Read `DESIGN.md` and then `AGENTS.md` before starting to build
 
 ---
 
@@ -61,4 +61,4 @@ Change a rule/rationale  →  edit the specific .md doc
 
 ## AI guidance
 
-This foundation is built to work with [Claude Code](https://claude.ai/claude-code). `CLAUDE.md` is picked up automatically — it points to `DESIGN.md` first (complete token snapshot) and then `_ai-guide.md` for the full reading order.
+This foundation is built to work with [Claude Code](https://claude.ai/claude-code). `CLAUDE.md` is picked up automatically — it points to `DESIGN.md` first (complete token snapshot) and then `AGENTS.md` for the full reading order.

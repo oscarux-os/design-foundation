@@ -30,7 +30,7 @@ If unsure which component to use or how something should be built — ask the ma
 
 ## Before building anything
 
-Read `DESIGN.md` first — it has the complete token snapshot (all color, typography, radius, spacing, and component values) in machine-readable YAML. Then read `_ai-guide.md` for the full reading order and rationale docs.
+Read `DESIGN.md` first — it has the complete token snapshot (all color, typography, radius, spacing, and component values) in machine-readable YAML. Then read `AGENTS.md` for the full reading order and rationale docs.
 
 **When a token value changes:** update `DESIGN.md` (YAML front matter) first, then update `app/globals.css`. The per-concern docs (`tokens.md`, `radius.md`, `typography.md`, `spacing.md`) document structure and rationale — they do not repeat values.
 

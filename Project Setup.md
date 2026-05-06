@@ -85,7 +85,7 @@ The project uses a collection of MD files that guide AI in the right direction w
 9. `grammar-and-style.md` — voice, tone, copy rules
 10. `styleguide.md` — `/style-guide` route, components + blocks tabs
 
-**Rule:** Before building a new page or component — read `DESIGN.md` and `_ai-guide.md`, then the relevant sub-files.
+**Rule:** Before building a new page or component — read `DESIGN.md` and `AGENTS.md`, then the relevant sub-files.
 
 ---
 
@@ -177,4 +177,3 @@ npx @figma/code-connect publish
 Run this after every new component or prop change.
 
 ---
-

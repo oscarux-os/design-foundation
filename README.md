@@ -13,7 +13,6 @@ Built and maintained as a reusable design foundation.
 | `CLAUDE.md` | AI context — loaded automatically by Claude Code |
 | `DESIGN.md` | Machine-readable token snapshot — single source of truth for all values |
 | `AGENTS.md` | Reading order for AI before building anything |
-| `The idea.md` | Vision, stack, and key rules |
 | `Project Setup.md` | Full build order and Figma connection guide |
 | `tokens.md` | Color token structure, Tailwind mapping, and allowed classes |
 | `grid.md` | Responsive 12-column grid system |

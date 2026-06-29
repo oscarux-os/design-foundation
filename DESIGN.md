@@ -3,46 +3,50 @@ version: alpha
 name: oh.design
 
 colors:
-  background: "oklch(0.94 0.022 138)"
-  foreground: "oklch(0.13 0.05 138)"
-  card: "oklch(0.99 0.004 138)"
-  card-foreground: "oklch(0.15 0.05 138)"
-  popover: "oklch(0.99 0.004 138)"
-  popover-foreground: "oklch(0.15 0.05 138)"
-  primary: "oklch(0.38 0.22 138)"
+  # Neutral chrome — cool gray, hue 250 at very low chroma. Green (hue 138) is
+  # the only accent: primary, ring, and the accent tonal fill. Red for errors.
+  background: "oklch(0.97 0.003 250)"
+  foreground: "oklch(0.20 0.012 250)"
+  card: "oklch(0.99 0.002 250)"
+  card-foreground: "oklch(0.20 0.012 250)"
+  popover: "oklch(0.99 0.002 250)"
+  popover-foreground: "oklch(0.20 0.012 250)"
+  primary: "oklch(0.50 0.14 138)"
   primary-foreground: "oklch(0.99 0 0)"
-  secondary: "oklch(0.89 0.06 138)"
-  secondary-foreground: "oklch(0.22 0.08 138)"
-  muted: "oklch(0.91 0.018 138)"
-  muted-foreground: "oklch(0.44 0.08 138)"
-  accent: "oklch(0.87 0.07 138)"
-  accent-foreground: "oklch(0.20 0.08 138)"
+  secondary: "oklch(0.94 0.005 250)"
+  secondary-foreground: "oklch(0.27 0.012 250)"
+  muted: "oklch(0.95 0.004 250)"
+  muted-foreground: "oklch(0.50 0.012 250)"
+  accent: "oklch(0.90 0.05 138)"
+  accent-foreground: "oklch(0.33 0.09 138)"
   destructive: "oklch(0.46 0.20 30.74)"
   destructive-foreground: "oklch(0.99 0 0)"
-  border: "oklch(0.74 0.07 138)"
-  input: "oklch(0.74 0.07 138)"
-  ring: "oklch(0.46 0.20 138)"
+  border: "oklch(0.90 0.005 250)"
+  input: "oklch(0.90 0.005 250)"
+  ring: "oklch(0.55 0.13 138)"
 
 "colors-dark":
-  background: "oklch(0.14 0.005 138)"
-  foreground: "oklch(0.97 0.02 138)"
-  card: "oklch(0.18 0.02 138)"
-  card-foreground: "oklch(0.96 0.02 138)"
-  popover: "oklch(0.18 0.02 138)"
-  popover-foreground: "oklch(0.97 0.02 138)"
-  primary: "oklch(0.75 0.20 138)"
-  primary-foreground: "oklch(0.12 0.04 138)"
-  secondary: "oklch(0.22 0.06 138)"
-  secondary-foreground: "oklch(0.75 0.18 138)"
-  muted: "oklch(0.20 0.03 138)"
-  muted-foreground: "oklch(0.65 0.06 138)"
-  accent: "oklch(0.28 0.08 138)"
-  accent-foreground: "oklch(0.95 0.04 138)"
-  destructive: "oklch(0.46 0.21 27.50)"
+  # Same recipe inverted. Chroma stays near zero in the near-blacks (≤ L0.16) so
+  # the dark surfaces don't pick up a cast. Green accent brightens for dark.
+  background: "oklch(0.16 0.004 250)"
+  foreground: "oklch(0.96 0.005 250)"
+  card: "oklch(0.20 0.006 250)"
+  card-foreground: "oklch(0.96 0.005 250)"
+  popover: "oklch(0.20 0.006 250)"
+  popover-foreground: "oklch(0.96 0.005 250)"
+  primary: "oklch(0.70 0.15 138)"
+  primary-foreground: "oklch(0.16 0.04 138)"
+  secondary: "oklch(0.25 0.008 250)"
+  secondary-foreground: "oklch(0.95 0.006 250)"
+  muted: "oklch(0.24 0.006 250)"
+  muted-foreground: "oklch(0.68 0.012 250)"
+  accent: "oklch(0.28 0.06 138)"
+  accent-foreground: "oklch(0.92 0.05 138)"
+  destructive: "oklch(0.50 0.20 27.50)"
   destructive-foreground: "oklch(0.99 0 0)"
-  border: "oklch(0.28 0.05 138)"
-  input: "oklch(0.32 0.05 138)"
-  ring: "oklch(0.60 0.18 138)"
+  border: "oklch(0.27 0.006 250)"
+  input: "oklch(0.30 0.006 250)"
+  ring: "oklch(0.62 0.14 138)"
 
 # Inter sets all UI text; IBM Plex Mono sets code and tabular data (weights 400/500).
 # Exposed as --font-sans / --font-mono CSS variables.
@@ -284,7 +288,7 @@ All token values live in this file (YAML above). The implementation lives in `ap
 
 ## Colors
 
-Green-tinted palette built in oklch, hue 138 throughout. Full light/dark mode — the same token names switch values automatically via the `.dark` class on `<html>`. Primary is a deep forest green in light mode, a bright sage in dark mode.
+Neutral chrome with green as the single accent, built in oklch. The grays are cool-neutral (hue 250 at very low chroma) so the surfaces don't impose a tint on whatever sits on them; green (hue 138) carries `primary`, `ring`, and the `accent` tonal fill, and red carries `destructive`. Full light/dark mode — the same token names switch values automatically via the `.dark` class on `<html>`.
 
 Semantic, role-based naming: `background`, `foreground`, `card`, `primary`, `muted`, `accent`, `destructive`, `border`, `ring` — plus `-foreground` variants for text on colored surfaces.
 

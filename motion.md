@@ -66,15 +66,17 @@ _Decided when the need arises. Candidates:_
 
 ## Timing & Easing
 
-_Values defined here once established._
+> **Values are defined in `DESIGN.md`** (YAML — `motion`). When you change a duration or easing curve, update `DESIGN.md` first, then update `app/globals.css`.
+
+Snappy first — every duration stays under 400ms. `ease-spring` adds a slight overshoot for interactive, gesture-driven elements; everything else uses `ease-default`.
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `duration-fast` | — | Hover, focus, snappy interactions |
-| `duration-base` | — | Standard enter/exit |
-| `duration-slow` | — | Page transitions, large reveals |
-| `ease-default` | — | Standard easing |
-| `ease-spring` | — | Interactive, gesture-driven elements |
+| `duration-fast` | `150ms` | Hover, focus, snappy interactions |
+| `duration-base` | `250ms` | Standard enter/exit |
+| `duration-slow` | `350ms` | Page transitions, large reveals |
+| `ease-default` | `cubic-bezier(0.4, 0, 0.2, 1)` | Standard easing |
+| `ease-spring` | `cubic-bezier(0.175, 0.885, 0.32, 1.1)` | Interactive, gesture-driven elements |
 
 ---
 

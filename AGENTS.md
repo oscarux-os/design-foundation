@@ -49,7 +49,7 @@ If you are unsure which component to use, which layout pattern fits, or how some
 |----------|------|----------|
 | **All token values** | `DESIGN.md` | YAML front matter — single source of truth for values |
 | Colors | `tokens.md` | CSS structure, Tailwind mapping, allowed classes |
-| Layout | `grid.md` | 12-col desktop, 6-col mobile, gap-5 |
+| Layout | `grid.md` | 12-col desktop, 6-col mobile, responsive margin/gutter |
 | Text | `typography.md` | `<Heading>`, `<Text>`, `<Eyebrow>` via cva |
 | Spacing | `spacing.md` | Semantic tokens for layout, padding patterns for content |
 | Radius | `radius.md` | Token-based, no arbitrary values |

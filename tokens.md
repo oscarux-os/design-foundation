@@ -10,24 +10,24 @@ Design tokens are defined as CSS custom properties in `app/globals.css`. Tailwin
 
 ## Lightness model
 
-The tokens are semantic (`background`, `primary`, `muted`…), not a numbered ramp — but their **values follow a lightness grammar**, so we get the things a big intent-scale ramp gives you (contrast that holds, states for free) without 200 tokens the model would misuse. The whole system is oklch on one hue (138). That's the load-bearing decision: in oklch a given `L` reads at the same perceived lightness on any hue, so contrast computed once holds everywhere — there's no per-hue sanding like HSL forces.
+The tokens are semantic (`background`, `primary`, `muted`…), not a numbered ramp — but their **values follow a lightness grammar**, so we get the things a big intent-scale ramp gives you (contrast that holds, states for free) without 200 tokens the model would misuse. The whole system is oklch on two hues — cool-neutral grays at 250, a green accent at 138 — both at carefully chosen lightness. That's the load-bearing decision: in oklch a given `L` reads at the same perceived lightness on any hue, so contrast computed once holds across both the neutral and the accent — there's no per-hue sanding like HSL forces.
 
 **Elevation surfaces carry depth through lightness — closer to you is lighter, same direction in both themes.** Cards float above the page.
 
 | Surface | Light `L` | Dark `L` | Role |
 |---------|-----------|----------|------|
-| card / popover | 0.99 | 0.18 | raised |
-| background | 0.94 | 0.14 | page |
+| card / popover | 0.99 | 0.20 | raised |
+| background | 0.97 | 0.16 | page |
 
 In light mode raised = higher `L`; in dark mode raised = higher `L` too (just from a darker floor). Never use shadow alone to signal elevation — step the lightness. (See `DESIGN.md → Elevation & Depth`.)
 
-**Tonal fills (`muted`, `secondary`, `accent`) are not elevation — they step *away* from the page toward mid-gray to separate.** Same ranking in both themes: `muted` is the subtlest, `accent` the strongest. In light they sit below the page `L`; in dark, above it.
+**Tonal fills step *away* from the page to separate — they're not elevation.** `muted` and `secondary` are neutral; `accent` is the soft green tonal. In light they sit below the page `L`; in dark, above it.
 
-| Fill | Light `L` (Δ from bg) | Dark `L` (Δ from bg) |
-|------|----------------------|----------------------|
-| muted | 0.91 (−0.03) | 0.20 (+0.06) |
-| secondary | 0.89 (−0.05) | 0.22 (+0.08) |
-| accent | 0.87 (−0.07) | 0.28 (+0.14) |
+| Fill | Hue | Light `L` (Δ from bg) | Dark `L` (Δ from bg) |
+|------|-----|----------------------|----------------------|
+| muted | neutral | 0.95 (−0.02) | 0.24 (+0.08) |
+| secondary | neutral | 0.94 (−0.03) | 0.25 (+0.09) |
+| accent | green | 0.90 (−0.07) | 0.28 (+0.12) |
 
 **Three things you get for free — use these instead of inventing tokens:**
 
@@ -35,7 +35,7 @@ In light mode raised = higher `L`; in dark mode raised = higher `L` too (just fr
 2. **Hover / press are opacity, not new tokens.** Step the fill's opacity — hover `bg-primary/90`, active `bg-primary/80` — or composite a neutral state layer. It reads at the same intensity on every intent because oklch keeps it perceptually even. Don't add `primary-hover` tokens. (Values in `DESIGN.md → states`.)
 3. **Disabled is `opacity-50`.** Not a token, not a separate color. shadcn already does this; keep it.
 
-**The single hue (138) is a deliberate opinion.** A tinted chrome casts everything it surrounds — for a portfolio that green *is* the brand, so it stays. The trade-off worth knowing (per Lovable's writeup): if you ever foreground third-party imagery or user content, a tinted surface tints it too. Keep chroma low on surfaces (it already is: `≤0.022`) so the tint stays a whisper, not a wash.
+**The chrome is deliberately neutral — the opinion lives in the accent, not the surfaces.** A tinted gray casts everything it surrounds (per Lovable's writeup: purples cool, reds drift, imagery picks up a wash), so the grays stay cool-neutral at very low chroma (`≤0.006` on surfaces) and green appears only where it's an accent — `primary`, `ring`, `accent`. That keeps whatever you build on top free of a forced tint, while green still carries identity at the interaction points.
 
 **Keep the surface small and hard to misuse:** `foreground` tokens are for text and icons only; `border` tokens for borders only; states come from opacity, not new colors. A token's job is to put the wrong answer out of reach.
 

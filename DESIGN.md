@@ -355,6 +355,6 @@ Interaction is driven by tokens, not per-component colors: states come from opac
 | `col-span-*` with explicit column math | `grid-cols-2` or `grid-cols-3` in 12-col layout |
 | Step through breakpoints (1→2→3) | Jump from 1 to 3 items per row |
 | `rounded-*` Tailwind classes | Arbitrary `rounded-[7px]` |
-| `@phosphor-icons/react` with `size` prop | `className="w-5 h-5"` for icon sizing |
+| Size icons via the `size` prop | `className="w-5 h-5"` for icon sizing |
 | Nearest 4px spacing step | Arbitrary `p-[13px]` |
 | Ask before building if unsure | Guess and improvise |

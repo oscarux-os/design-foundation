@@ -77,14 +77,14 @@ Editorial headings for page structure. Normal weight, tight tracking.
 <Heading size="h4">Card Title</Heading>
 ```
 
-Values from `DESIGN.md → typography`. h1 is fluid via `clamp()`, h2–h4 use fixed Tailwind classes.
+Values from `DESIGN.md → typography`. h1 is fluid via `clamp()`, h2–h4 use fixed Tailwind classes. The Tailwind size classes already carry the `lineHeight` defined in `DESIGN.md`; h1 sets it inline.
 
-| Size | Rendering |
-|------|-----------|
-| `h1` | Fluid, inline style |
-| `h2` | `text-3xl` |
-| `h3` | `text-2xl` |
-| `h4` | `text-xl` |
+| Size | Rendering | Line height |
+|------|-----------|-------------|
+| `h1` | Fluid, inline style | `1.1` (inline `leading-[1.1]`) |
+| `h2` | `text-3xl` | `2.25rem` |
+| `h3` | `text-2xl` | `2rem` |
+| `h4` | `text-xl` | `1.75rem` |
 
 All heading: `font-normal text-foreground tracking-tight`
 
@@ -101,14 +101,14 @@ Body text in different variants.
 <Text variant="caption">Category · 2024</Text>
 ```
 
-| Variant | Size | Usage |
-|---------|------|-------|
-| `lead` | `text-xl` | Ingress, hero intro |
-| `body` | `text-base` | Standard body copy |
-| `small` | `text-sm` | Card descriptions |
-| `caption` | `text-xs` | Metadata, timestamps |
+| Variant | Size | Line height | Usage |
+|---------|------|-------------|-------|
+| `lead` | `text-xl` | `1.75rem` | Ingress, hero intro |
+| `body` | `text-base` | `1.5rem` | Standard body copy |
+| `small` | `text-sm` | `1.25rem` | Card descriptions |
+| `caption` | `text-xs` | `1rem` | Metadata, timestamps |
 
-Default text color: `text-foreground`. Secondary text: add `className="text-muted-foreground"`.
+The Tailwind size classes already carry these line heights (values in `DESIGN.md → typography`). Default text color: `text-foreground`. Secondary text: add `className="text-muted-foreground"`.
 
 ---
 
@@ -122,6 +122,22 @@ Small label above headings.
 ```
 
 Always: `text-xs uppercase tracking-widest text-muted-foreground`
+
+---
+
+## Code
+
+The one monospace role — IBM Plex Mono via `--font-mono`. For inline code, key names, and tabular figures where numbers must align.
+
+```tsx
+<Text variant="body">Run <code className="font-mono text-sm">npm install</code> to start.</Text>
+```
+
+| Variant | Family | Size | Line height | Usage |
+|---------|--------|------|-------------|-------|
+| `code` | IBM Plex Mono | `text-sm` | `1.25rem` | Inline code, keys, tabular numbers |
+
+Values from `DESIGN.md → typography.code` / `fonts.mono`. Use `font-mono` only for genuinely monospaced content — never for body prose.
 
 ---
 
@@ -152,3 +168,4 @@ Always: `text-xs uppercase tracking-widest text-muted-foreground`
 | `<Text variant="small">` | Text Style "Small" |
 | `<Text variant="caption">` | Text Style "Caption" |
 | `<Eyebrow>` | Text Style "Eyebrow" |
+| `code` (mono) | Text Style "Code" |

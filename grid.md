@@ -1,5 +1,7 @@
 # Grid — oh.design
 
+> **Values are defined in `DESIGN.md`** (YAML — `breakpoints` and `grid`). This file documents the column math, responsive class strings, and layout patterns. When a breakpoint, margin, or gutter value changes, update `DESIGN.md` first.
+
 12-column grid on desktop, 6-column on mobile. Margins and gutters scale with the viewport. Max width 1440px — content centres beyond that.
 
 **Contents:** [Scale](#grid-scale) · [Base structure](#base-structure) · [Column math](#column-math) · [Centering](#centering-content) · [Mobile breakpoints](#mobile-breakpoints----always-step-through) · [Rules](#rules)

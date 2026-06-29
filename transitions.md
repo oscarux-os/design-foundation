@@ -75,22 +75,24 @@ Small state changes on interactive elements.
 
 | Element | Property | Duration |
 |---------|----------|----------|
-| Button hover | `background-color`, `opacity` | — |
-| Link hover | `color`, `opacity` | — |
-| Input focus | `border-color`, `ring` | — |
-| Icon state change | `color`, `transform` | — |
+| Button hover | `background-color`, `opacity` | `duration-fast` (150ms) |
+| Link hover | `color`, `opacity` | `duration-fast` (150ms) |
+| Input focus | `border-color`, `ring` | `duration-fast` (150ms) |
+| Icon state change | `color`, `transform` | `duration-fast` (150ms) |
 
 ---
 
 ## Timing
 
-_Values defined here once established. Should align with `animations.md` timing tokens._
+> Values are defined in `DESIGN.md` (YAML — `motion`) and shared with `motion.md`. Same tokens, same curves.
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `duration-fast` | — | Micro-transitions |
-| `duration-base` | — | Overlay in/out |
-| `duration-slow` | — | Page transitions |
+| `duration-fast` | `150ms` | Micro-transitions |
+| `duration-base` | `250ms` | Overlay in/out |
+| `duration-slow` | `350ms` | Page transitions |
+
+Overlays and page transitions use `ease-default`; gesture-driven or interactive elements use `ease-spring`.
 
 ---
 

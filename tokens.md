@@ -4,7 +4,40 @@
 
 Design tokens are defined as CSS custom properties in `app/globals.css`. Tailwind maps these automatically via `@theme inline`. This is the only place colors, fonts, radius, and tracking are defined.
 
-**Contents:** [globals.css](#globalscss) · [Allowed classes](#allowed-tailwind-classes) · [Rules](#rules) · [Figma mapping](#figma-mapping)
+**Contents:** [Lightness model](#lightness-model) · [globals.css](#globalscss) · [Allowed classes](#allowed-tailwind-classes) · [Rules](#rules) · [Figma mapping](#figma-mapping)
+
+---
+
+## Lightness model
+
+The tokens are semantic (`background`, `primary`, `muted`…), not a numbered ramp — but their **values follow a lightness grammar**, so we get the things a big intent-scale ramp gives you (contrast that holds, states for free) without 200 tokens the model would misuse. The whole system is oklch on one hue (138). That's the load-bearing decision: in oklch a given `L` reads at the same perceived lightness on any hue, so contrast computed once holds everywhere — there's no per-hue sanding like HSL forces.
+
+**Elevation surfaces carry depth through lightness — closer to you is lighter, same direction in both themes.** Cards float above the page.
+
+| Surface | Light `L` | Dark `L` | Role |
+|---------|-----------|----------|------|
+| card / popover | 0.99 | 0.18 | raised |
+| background | 0.94 | 0.14 | page |
+
+In light mode raised = higher `L`; in dark mode raised = higher `L` too (just from a darker floor). Never use shadow alone to signal elevation — step the lightness. (See `DESIGN.md → Elevation & Depth`.)
+
+**Tonal fills (`muted`, `secondary`, `accent`) are not elevation — they step *away* from the page toward mid-gray to separate.** Same ranking in both themes: `muted` is the subtlest, `accent` the strongest. In light they sit below the page `L`; in dark, above it.
+
+| Fill | Light `L` (Δ from bg) | Dark `L` (Δ from bg) |
+|------|----------------------|----------------------|
+| muted | 0.91 (−0.03) | 0.20 (+0.06) |
+| secondary | 0.89 (−0.05) | 0.22 (+0.08) |
+| accent | 0.87 (−0.07) | 0.28 (+0.14) |
+
+**Three things you get for free — use these instead of inventing tokens:**
+
+1. **Intent fills clear contrast once, everywhere.** A solid fill (`primary`, `destructive`, any future intent) sits in a fixed lightness band per theme and pairs with a light label in light mode / dark label in dark mode. Because `L` is fixed across hues, a label that clears WCAG AA (4.5:1) on one intent clears it on all of them. Pick the fill `L`, pick the label, verify once.
+2. **Hover / press are opacity, not new tokens.** Step the fill's opacity — hover `bg-primary/90`, active `bg-primary/80` — or composite a neutral state layer. It reads at the same intensity on every intent because oklch keeps it perceptually even. Don't add `primary-hover` tokens. (Values in `DESIGN.md → states`.)
+3. **Disabled is `opacity-50`.** Not a token, not a separate color. shadcn already does this; keep it.
+
+**The single hue (138) is a deliberate opinion.** A tinted chrome casts everything it surrounds — for a portfolio that green *is* the brand, so it stays. The trade-off worth knowing (per Lovable's writeup): if you ever foreground third-party imagery or user content, a tinted surface tints it too. Keep chroma low on surfaces (it already is: `≤0.022`) so the tint stays a whisper, not a wash.
+
+**Keep the surface small and hard to misuse:** `foreground` tokens are for text and icons only; `border` tokens for borders only; states come from opacity, not new colors. A token's job is to put the wrong answer out of reach.
 
 ---
 
@@ -34,6 +67,7 @@ Fill values from `DESIGN.md` → `colors` (light) and `colors-dark` (dark).
   --accent: ;
   --accent-foreground: ;
   --destructive: ;
+  --destructive-foreground: ;
   --border: ;
   --input: ;
   --ring: ;
@@ -63,6 +97,7 @@ Fill values from `DESIGN.md` → `colors` (light) and `colors-dark` (dark).
   --accent: ;
   --accent-foreground: ;
   --destructive: ;
+  --destructive-foreground: ;
   --border: ;
   --input: ;
   --ring: ;
@@ -88,6 +123,7 @@ Fill values from `DESIGN.md` → `colors` (light) and `colors-dark` (dark).
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -157,6 +193,7 @@ text-primary             — brand/accent text
 text-primary-foreground  — text on primary background
 text-card-foreground     — text inside cards
 text-destructive         — error messages
+text-destructive-foreground — label on a destructive/danger fill
 ```
 
 ### Background
@@ -174,7 +211,13 @@ bg-accent         — accent background
 
 ```
 border-border     — all borders
-ring-ring         — focus rings
+ring-ring         — focus ring color
+```
+
+Focus ring (values in `DESIGN.md → focus-ring`): 2px ring in `ring`, 2px offset, shown on `:focus-visible` for every interactive element.
+
+```tsx
+className="focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
 ```
 
 ### Radius

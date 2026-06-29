@@ -154,11 +154,20 @@ Then use them as Tailwind classes:
 
 shadcn components manage their own internal spacing via Tailwind directly. Don't override it.
 
+### Control size ladder
+
+Buttons and inputs share **one** ladder so a default button and a default input line up in a row. Heights are the contract (`DESIGN.md → control-sizes`); implement via each component's cva `size` variant. Default is medium.
+
+| Size | Height | Horizontal padding | Tailwind |
+|------|--------|--------------------|----------|
+| `sm` | 32px | 12px | `h-8 px-3` |
+| `default` | 40px | 16px | `h-10 px-4` |
+| `lg` | 48px | 24px | `h-12 px-6` |
+
+### Other components
+
 | Component | Padding | Source |
 |-----------|---------|--------|
-| Button (default) | `px-4 py-2` | shadcn |
-| Button (large) | `px-6 py-3` | shadcn |
-| Input | `px-3 py-2` | shadcn |
 | Card | `p-6` | shadcn |
 | Badge | `px-2 py-0.5` | shadcn |
 
@@ -169,5 +178,5 @@ shadcn components manage their own internal spacing via Tailwind directly. Don't
 - **Never use semantic tokens inside components** — that's shadcn's territory.
 - **Never use component-level spacing for layout** — use semantic tokens instead.
 - **Never hardcode values** at either layer — no `p-[13px]`, no `style={{ gap: '20px' }}`.
-- **Grid gap is always `gap-5` (20px)** — this is separate from semantic tokens and never changes.
+- **Grid gutter is responsive** (`gap-3` → `gap-4` → `gap-7` → `gap-8`) and lives in `grid.md` / `DESIGN.md → grid` — it is separate from these semantic spacing tokens.
 - **Rem scales with the browser** — all values are rem-based so they respond to the user's font size settings automatically.

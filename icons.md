@@ -22,49 +22,57 @@ import { ArrowRight, ChevronDown, X, Check, ArrowSquareOut } from "@phosphor-ico
 
 ## Sizes
 
-Five allowed sizes. The stroke should look visually the same across all sizes — just scaled up. Since Phosphor's stroke weight is fixed per weight variant, compensate by using a lighter weight at smaller sizes and heavier at larger sizes. A `regular` icon at 16px and a `bold` icon at 96px should feel like the same stroke proportionally.
+Five allowed sizes. Every icon uses the same `thin` (~1px hairline) weight — set once globally (see [Weights](#weights)), not per icon. Size changes the box; the weight stays thin.
 
-| Size | px | Weight | Usage |
-|------|----|--------|-------|
-| `size={16}` | 16px | `light` | Inline with text, buttons, badges |
-| `size={24}` | 24px | `regular` | Standard standalone icon |
-| `size={48}` | 48px | `regular` | Feature icons, empty states |
-| `size={64}` | 64px | `bold` | Large illustrative icons |
-| `size={96}` | 96px | `bold` | Hero / display icons |
+| Size | px | Usage |
+|------|----|-------|
+| `size={16}` | 16px | Inline with text, buttons, badges |
+| `size={24}` | 24px | Standard standalone icon |
+| `size={48}` | 48px | Feature icons, empty states |
+| `size={64}` | 64px | Large illustrative icons |
+| `size={96}` | 96px | Hero / display icons |
 
 ```tsx
-// ✅ Right
-<ArrowRight size={16} weight="regular" />
-<ArrowSquareOut size={24} weight="regular" />
-<Star size={48} weight="bold" />
+// ✅ Right — weight inherited from IconContext (thin)
+<ArrowRight size={16} />
+<ArrowSquareOut size={24} />
+<Star size={48} />
 
 // ❌ Wrong
-<ArrowRight size={18} />
-<ArrowRight className="w-5 h-5" />  // Avoid — use size prop
+<ArrowRight size={18} />              // off-scale size
+<ArrowRight className="w-5 h-5" />    // use the size prop
 ```
+
+> Phosphor's stroke scales with the icon, so a fixed weight isn't a literally constant pixel width — `thin` keeps the lightest, most consistent hairline. At 16px on a non-retina display it can read faint; bump that one instance to `light` if needed.
 
 ---
 
 ## Weights
 
-Phosphor icons come in six weights. Decide on a default and stick to it.
+Phosphor icons come in six weights. **Default: `thin`** — the ~1px hairline look. Set it once globally so every icon inherits it; don't pass `weight` per icon except for the rare deliberate exception below.
 
 | Weight | Usage |
 |--------|-------|
-| `regular` | Default — most UI contexts |
-| `bold` | Emphasis, strong actions |
-| `light` | Subtle, decorative |
-| `fill` | Active/selected states |
-| `duotone` | — |
-| `thin` | — |
+| `thin` | **Default** — the 1px hairline, everywhere |
+| `fill` | Active/selected states (e.g. current nav item) |
+| `light` | Fallback if `thin` reads too faint at 16px on non-retina |
+| `regular`, `bold`, `duotone` | Not used |
+
+Set the default once via `IconContext` so you never repeat `weight` on every icon:
 
 ```tsx
-<ArrowRight size={20} weight="regular" />
-<ArrowRight size={20} weight="bold" />
-<ArrowRight size={20} weight="fill" />  // e.g. active nav item
+// app/layout.tsx (or a providers file)
+import { IconContext } from "@phosphor-icons/react"
+
+<IconContext.Provider value={{ weight: "thin" }}>
+  {children}
+</IconContext.Provider>
 ```
 
-**Default weight: `light`.** Override with `bold` at larger sizes (48px+) to maintain proportional stroke.
+```tsx
+<ArrowRight size={24} />                 // inherits thin
+<House size={24} weight="fill" />        // exception: active nav item
+```
 
 ---
 
@@ -118,6 +126,7 @@ For icons that need a background:
 ## Rules
 
 - **Only `@phosphor-icons/react`.** No other icon packages.
+- **Default weight is `thin` (~1px hairline)**, set globally via `IconContext` — don't pass `weight` per icon except `fill` for active/selected states.
 - **Only `size={16}`, `size={24}`, `size={48}`, `size={64}`, or `size={96}`.**
 - **Never `className="w-5 h-5"`** to set size — use the `size` prop.
 - **Never hardcode color** — use `currentColor` via text classes.

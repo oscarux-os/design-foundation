@@ -45,7 +45,7 @@ colors:
   ring: "oklch(0.60 0.18 138)"
 
 # Inter sets all UI text; IBM Plex Mono sets code and tabular data (weights 400/500).
-# Injected via next/font as --font-sans / --font-mono.
+# Exposed as --font-sans / --font-mono CSS variables.
 fonts:
   sans: "Inter"
   mono: "IBM Plex Mono"
@@ -218,7 +218,7 @@ motion:
 
 # One size ladder for all controls (buttons + inputs). A default button and a
 # default input share the 2.5rem height so they align in a row. Heights are the
-# contract; implement via shadcn cva `size` variants — don't duplicate per pixel.
+# contract; implement via each component's `size` variant — don't duplicate per pixel.
 control-sizes:
   sm:
     height: "2rem"      # 32px — h-8
@@ -274,7 +274,7 @@ components:
 
 ## Overview
 
-Personal portfolio and test platform. Next.js (App Router) · TypeScript · Tailwind CSS v4 · shadcn/ui · @phosphor-icons/react · Inter + IBM Plex Mono.
+A complete, machine-readable design token snapshot (YAML above) — colors, fonts, typography, radius, spacing, breakpoints, grid, motion, and component tokens. The values are framework-agnostic; this foundation wires them up with Tailwind CSS v4 and Inter + IBM Plex Mono, but the tokens port to any stack.
 
 All token values live in this file (YAML above). The implementation lives in `app/globals.css` — populate it from this file. Per-concern docs (`tokens.md`, `radius.md`, `typography.md`, `spacing.md`) document the rationale and rules; they do not repeat values.
 
@@ -286,7 +286,7 @@ All token values live in this file (YAML above). The implementation lives in `ap
 
 Green-tinted palette built in oklch, hue 138 throughout. Full light/dark mode — the same token names switch values automatically via the `.dark` class on `<html>`. Primary is a deep forest green in light mode, a bright sage in dark mode.
 
-Semantic naming follows shadcn/ui conventions: `background`, `foreground`, `card`, `primary`, `muted`, `accent`, `destructive`, `border`, `ring` — plus `-foreground` variants for text on colored surfaces.
+Semantic, role-based naming: `background`, `foreground`, `card`, `primary`, `muted`, `accent`, `destructive`, `border`, `ring` — plus `-foreground` variants for text on colored surfaces.
 
 See `tokens.md` for the CSS structure, Tailwind mapping, and allowed classes.
 
@@ -294,7 +294,7 @@ See `tokens.md` for the CSS structure, Tailwind mapping, and allowed classes.
 
 ## Typography
 
-Two font families (`fonts` above): Inter (sans-serif) for all UI text, IBM Plex Mono for code and tabular data. Set up via `next/font/google` with CSS variable injection — no hardcoded font stacks in components.
+Two font families (`fonts` above): Inter (sans-serif) for all UI text, IBM Plex Mono for code and tabular data. Exposed as `--font-sans` / `--font-mono` CSS variables — no hardcoded font stacks in components.
 
 The scale has three tiers: Display (bold, uppercase, fluid clamp — heroes and marketing moments), Heading (normal weight, tight tracking, editorial), and Text variants (lead, body, small, caption, eyebrow). The `code` token is the one mono role — inline code and tabular figures.
 
@@ -306,7 +306,7 @@ Always use `<Heading>`, `<Text>`, `<Eyebrow>` — never raw HTML tags with manua
 
 12-column grid on desktop, 6-column on mobile, centred at max 1440px. Breakpoints, max-width, and the responsive margin/gutter values are in the YAML above (`breakpoints`, `grid`). Breakpoints are custom (sm 480 / md 768 / lg 992 / xl 1200 / 2xl 1440); columns switch from 6 to 12 at md. See `grid.md` for the `col-span` math and per-row patterns.
 
-Spacing has two layers: a foundational 4px scale (`spacing.scale`) and semantic tokens (`spacing.between-*` etc.) for section, block, and layout-level gaps. Component padding is shadcn's territory — never use semantic tokens inside components. See `spacing.md` for the full two-layer system.
+Spacing has two layers: a foundational 4px scale (`spacing.scale`) and semantic tokens (`spacing.between-*` etc.) for section, block, and layout-level gaps. Component padding is the component's own concern — never use semantic tokens inside components. See `spacing.md` for the full two-layer system.
 
 ---
 
@@ -336,11 +336,11 @@ See `radius.md` for per-component values and the nesting rule.
 
 ## Components
 
-All components are built on shadcn/ui with Radix UI primitives. Variants use class-variance-authority (cva). Each component has a matching `.figma.tsx` Code Connect file to keep design and code in sync.
+The `components` block above gives ready-to-use token values per element (background, text, radius, padding), all referencing the tokens above.
 
-Controls (buttons, inputs) follow one size ladder — `sm` 32px / `default` 40px / `lg` 48px (see `control-sizes` above). A default button and a default input share the 40px height so they line up in a form row. The heights here are the contract; the implementation lives in each component's cva `size` variant — keep the two in sync via the standard "update DESIGN.md first" workflow rather than duplicating padding values per component.
+Controls (buttons, inputs) follow one size ladder — `sm` 32px / `default` 40px / `lg` 48px (see `control-sizes` above). A default button and a default input share the 40px height so they line up in a form row. The heights here are the contract; each component's `size` variant references them — keep the two in sync via the standard "update DESIGN.md first" workflow rather than hardcoding dimensions per component.
 
-Typography components (`<Heading>`, `<Text>`, `<Eyebrow>`) are custom — not from shadcn. See `styleguide.md` for the full component inventory and style guide structure.
+Typography components (`<Heading>`, `<Text>`, `<Eyebrow>`) are custom text components, not generic primitives. See `styleguide.md` for the full component inventory and style guide structure.
 
 Interaction is driven by tokens, not per-component colors: states come from opacity (`states` — hover 90%, active 80%, disabled 50%), and every interactive element shows the `focus-ring` on `:focus-visible`. Never remove a focus outline without a visible replacement.
 
@@ -356,6 +356,5 @@ Interaction is driven by tokens, not per-component colors: states come from opac
 | Step through breakpoints (1→2→3) | Jump from 1 to 3 items per row |
 | `rounded-*` Tailwind classes | Arbitrary `rounded-[7px]` |
 | `@phosphor-icons/react` with `size` prop | `className="w-5 h-5"` for icon sizing |
-| `@radix-ui/react-*` | `@base-ui/react` |
 | Nearest 4px spacing step | Arbitrary `p-[13px]` |
 | Ask before building if unsure | Guess and improvise |

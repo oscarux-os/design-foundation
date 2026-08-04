@@ -1,39 +1,18 @@
 # oh.design
 
-Next.js portfolio and test platform for personal use. The master is a UX designer — usability and design are top priorities. Everything should exist for a reason, feel effortless and frictionless.
+All project instructions live in `AGENTS.md` so that every AI tool reads the same
+source. It is imported below — treat its contents as if written here.
 
-The goal is a strong foundation that lets things get built quickly and correctly from the start, without having to go back and fix things later.
+@AGENTS.md
 
-## Stack
+---
 
-**Framework: Next.js (App Router) — default.** Use this unless the master explicitly asks for something else (e.g. TanStack Start). The foundation docs, shadcn setup, and Tailwind v4 guidance all assume Next.js.
+## Claude Code only
 
-Next.js (App Router) · TypeScript · Tailwind CSS v4 · shadcn/ui · @phosphor-icons/react
+Everything above is shared with other agents. This section is not.
 
-## Starting a new project with this foundation
+- **Refining existing UI** — use the `/oh-design` skill. It strips generated-UI
+  tells, fixes token violations, and diagnoses what actually feels off. Aim it at
+  a component, section, or page after a first draft.
 
-This repo is a design foundation — the tokens, grid, typography rules and style guide are intentionally generic and ready to be adapted. When bootstrapping a new project from this foundation, ask the master about the project-specific choices below **before writing any code**, then update the relevant docs with the answers.
-
-- **Project name & purpose** — update the intro at the top of this file.
-- **Fonts** — heading / body / mono families → `typography.md`.
-- **Base colors** — brand/primary, background, foreground, accent → `DESIGN.md` (colors + colors-dark), then `tokens.md` for CSS structure.
-- **Radius scale** — tight / default / rounded preferences → `DESIGN.md` (rounded + rounded-desktop), then `radius.md` for per-component usage.
-- **Spacing preferences** — any deviations from the 4px grid defaults → `DESIGN.md` (spacing), then `spacing.md` for semantic token usage.
-- **Icon library** — default is `@phosphor-icons/react` (see `icons.md`); confirm before swapping.
-- **Breakpoint targets** — any non-standard device targets → `grid.md`.
-
-Don't guess values. If the master hasn't answered yet, pause and ask. Once a value is decided, write it into the matching doc so the foundation becomes project-specific in one place.
-
-## When in doubt
-
-If unsure which component to use or how something should be built — ask the master before writing any code.
-
-## Before building anything
-
-Read `DESIGN.md` first — it has the complete token snapshot (all color, typography, radius, spacing, and component values) in machine-readable YAML. Then read `AGENTS.md` for the full reading order and rationale docs.
-
-**When a token value changes:** update `DESIGN.md` (YAML front matter) first, then update `app/globals.css`. The per-concern docs (`tokens.md`, `radius.md`, `typography.md`, `spacing.md`) document structure and rationale — they do not repeat values.
-
-## Highlighted text
-
-When the master highlights text in a file using `==like this==`, it is a personal note with their take or a change they want applied. Read it, update the file to reflect it, and remove the highlight.
+**Edit `AGENTS.md`, not this file,** for anything that isn't Claude Code-specific.

@@ -6,6 +6,20 @@ Master plan for the entire project: build order, AI guidance, Figma connection, 
 
 ## Build Order (step-by-step)
 
+### 0. Ask before writing any code
+
+This repo is a design foundation — the tokens, grid, typography rules and style guide are intentionally generic and ready to be adapted. When bootstrapping a new project from it, ask the master about the project-specific choices below **before writing any code**, then write the answers into the matching docs.
+
+- **Project name & purpose** — update the intro at the top of `AGENTS.md`.
+- **Fonts** — heading / body / mono families → `typography.md`.
+- **Base colors** — brand/primary, background, foreground, accent → `DESIGN.md` (colors + colors-dark), then `tokens.md` for CSS structure.
+- **Radius scale** — tight / default / rounded preferences → `DESIGN.md` (rounded + rounded-desktop), then `radius.md` for per-component usage.
+- **Spacing preferences** — any deviations from the 4px grid defaults → `DESIGN.md` (spacing), then `spacing.md` for semantic token usage.
+- **Icon library** — default is `@phosphor-icons/react` (see `icons.md`); confirm before swapping.
+- **Breakpoint targets** — any non-standard device targets → `grid.md`.
+
+Don't guess values. If the master hasn't answered yet, pause and ask. Once a value is decided, write it into the matching doc so the foundation becomes project-specific in one place.
+
 ### 1. Initialise the project
 
 ```bash
@@ -71,21 +85,9 @@ See the **Code Connect Integration** section below.
 
 The project uses a collection of MD files that guide AI in the right direction when building pages and components.
 
-### Reading order
+`AGENTS.md` is the single instruction source — it holds the project brief, the stack, the always-apply rules, and the reading order. `CLAUDE.md` imports it, so Claude Code and Codex both work from the same content. **Don't restate its contents here.**
 
-0. `DESIGN.md` — complete token snapshot (all values in YAML). Read this first.
-1. `tokens.md` — CSS structure, Tailwind mapping, allowed classes
-2. `grid.md` — column system, breakpoints, rules
-3. `typography.md` — Heading/Text/Eyebrow components
-4. `spacing.md` — 4px grid, semantic tokens, padding patterns
-5. `radius.md` — responsive radius scale, per-component values
-6. `icons.md` — `@phosphor-icons/react`, sizes, usage
-7. `motion.md` — motion principles (snappy, fluid, intuitive)
-8. `transitions.md` — page and overlay transition patterns
-9. `grammar-and-style.md` — voice, tone, copy rules
-10. `styleguide.md` — `/style-guide` route, components + blocks tabs
-
-**Rule:** Before building a new page or component — read `DESIGN.md` and `AGENTS.md`, then the relevant sub-files.
+**Rule:** Before building a new page or component — read `DESIGN.md` for values, then `AGENTS.md` for the rules and the reading order into the per-concern docs.
 
 ---
 

@@ -10,10 +10,10 @@ Built and maintained as a reusable design foundation.
 
 | File | Purpose |
 |------|---------|
-| `CLAUDE.md` | AI context — loaded automatically by Claude Code |
+| `AGENTS.md` | Single instruction source for AI — brief, rules, reading order |
+| `CLAUDE.md` | Thin shim that imports `AGENTS.md`, plus Claude Code specifics |
 | `DESIGN.md` | Machine-readable token snapshot — single source of truth for all values |
-| `AGENTS.md` | Reading order for AI before building anything |
-| `Project Setup.md` | Full build order and Figma connection guide |
+| `Project Setup.md` | Bootstrap questions, build order, and Figma connection guide |
 | `tokens.md` | Color token structure, Tailwind mapping, and allowed classes |
 | `grid.md` | Responsive 12-column grid system |
 | `typography.md` | Heading, Text, Eyebrow components + font setup |
@@ -60,4 +60,13 @@ Change a rule/rationale  →  edit the specific .md doc
 
 ## AI guidance
 
-This foundation is built to work with [Claude Code](https://claude.ai/claude-code). `CLAUDE.md` is picked up automatically — it points to `DESIGN.md` first (complete token snapshot) and then `AGENTS.md` for the full reading order.
+`AGENTS.md` is the single instruction source — the project brief, stack, always-apply rules, and the reading order into the per-concern docs. Every fact lives there once.
+
+- **Codex** and other agents read `AGENTS.md` directly.
+- **[Claude Code](https://claude.ai/claude-code)** picks up `CLAUDE.md`, which imports `AGENTS.md` wholesale and adds Claude-specific notes on top.
+
+Editing instructions? Edit `AGENTS.md`. `CLAUDE.md` only holds what is genuinely Claude Code-specific.
+
+### Skills
+
+`.claude/skills/oh-design/` is a refinement pass for Claude Code — invoke it with `/oh-design` and aim it at UI that already exists. It strips generated-UI tells, fixes token violations, and diagnoses what feels off. It travels with the repo when you clone the foundation.

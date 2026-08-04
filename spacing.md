@@ -122,7 +122,7 @@ Register semantic tokens in `@theme` in `globals.css` so they become usable as T
 ```css
 @theme {
   --spacing-between-cards:     var(--size-12);
-  --spacing-between-chips:     var(--size-8);
+  --spacing-between-chips:     var(--size-4);
   --spacing-screen-edge:       var(--size-24);
   --spacing-component-default: var(--size-16);
   --spacing-between-text:      var(--size-8);

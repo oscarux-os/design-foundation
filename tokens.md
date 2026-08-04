@@ -31,7 +31,7 @@ In light mode raised = higher `L`; in dark mode raised = higher `L` too (just fr
 
 **Three things you get for free — use these instead of inventing tokens:**
 
-1. **Intent fills clear contrast once, everywhere.** A solid fill (`primary`, `destructive`, any future intent) sits in a fixed lightness band per theme and pairs with a light label in light mode / dark label in dark mode. Because `L` is fixed across hues, a label that clears WCAG AA (4.5:1) on one intent clears it on all of them. Pick the fill `L`, pick the label, verify once.
+1. **Intent fills clear contrast once, everywhere.** A solid fill (`primary`, `destructive`, `success`, `warning`, any future intent) sits in a fixed lightness band per theme and pairs with a light label in light mode / dark label in dark mode. Because `L` is fixed across hues, a label that clears WCAG AA (4.5:1) on one intent clears it on all of them. Pick the fill `L`, pick the label, verify once.
 2. **Hover / press are opacity, not new tokens.** Step the fill's opacity — hover `bg-primary/90`, active `bg-primary/80` — or composite a neutral state layer. It reads at the same intensity on every intent because oklch keeps it perceptually even. Don't add `primary-hover` tokens. (Values in `DESIGN.md → states`.)
 3. **Disabled is `opacity-50`.** Not a token, not a separate color. shadcn already does this; keep it.
 
@@ -68,6 +68,10 @@ Fill values from `DESIGN.md` → `colors` (light) and `colors-dark` (dark).
   --accent-foreground: ;
   --destructive: ;
   --destructive-foreground: ;
+  --success: ;
+  --success-foreground: ;
+  --warning: ;
+  --warning-foreground: ;
   --border: ;
   --input: ;
   --ring: ;
@@ -98,6 +102,10 @@ Fill values from `DESIGN.md` → `colors` (light) and `colors-dark` (dark).
   --accent-foreground: ;
   --destructive: ;
   --destructive-foreground: ;
+  --success: ;
+  --success-foreground: ;
+  --warning: ;
+  --warning-foreground: ;
   --border: ;
   --input: ;
   --ring: ;
@@ -124,6 +132,10 @@ Fill values from `DESIGN.md` → `colors` (light) and `colors-dark` (dark).
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -194,6 +206,10 @@ text-primary-foreground  — text on primary background
 text-card-foreground     — text inside cards
 text-destructive         — error messages
 text-destructive-foreground — label on a destructive/danger fill
+text-success             — confirmation messages
+text-success-foreground  — label on a success fill
+text-warning             — caution messages
+text-warning-foreground  — label on a warning fill
 ```
 
 ### Background
@@ -205,7 +221,12 @@ bg-muted          — subtle backgrounds, icon containers
 bg-primary        — brand background
 bg-secondary      — secondary background
 bg-accent         — accent background
+bg-destructive    — error fill
+bg-success        — confirmation fill
+bg-warning        — caution fill
 ```
+
+Intent fills (`destructive`, `success`, `warning`) share one lightness band, so the same white label clears AA on all three. States come from opacity as everywhere else — `hover:bg-success/90`, `active:bg-success/80`. Intents mark state only; `primary` stays the brand accent.
 
 ### Borders and focus
 
@@ -223,12 +244,16 @@ className="focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offse
 ### Radius
 
 ```
-rounded-sm        — calc(--radius - 4px) = 12px
-rounded-md        — calc(--radius - 2px) = 14px
-rounded-lg        — var(--radius) = 16px
-rounded-xl        — calc(--radius + 4px) = 20px
-rounded-input     — var(--radius-input) = 12px
+rounded-sm        — badges, tags, tooltips
+rounded-md        — buttons, icon containers
+rounded-lg        — cards, modals, sheets
+rounded-xl        — large hero surfaces
+rounded-2xl       — oversized surfaces
+rounded-input     — inputs and textareas
+rounded-full      — avatars and pill badges only
 ```
+
+Values in `DESIGN.md → rounded` (mobile) and `rounded-desktop` (768px+) — the scale switches automatically at `md`, so these classes are correct at every breakpoint. `rounded-input` is fixed across breakpoints. See `radius.md` for the full per-component table and the nesting rule.
 
 ---
 

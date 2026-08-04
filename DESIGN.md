@@ -4,7 +4,10 @@ name: oh.design
 
 colors:
   # Neutral chrome — cool gray, hue 250 at very low chroma. Green (hue 138) is
-  # the only accent: primary, ring, and the accent tonal fill. Red for errors.
+  # the only accent: primary, ring, and the accent tonal fill. Intent fills
+  # (destructive / success / warning) all sit at L0.46 so a white label clears
+  # AA on every one — see tokens.md → Lightness model. Success is emerald
+  # (hue 165), deliberately off the brand green so status never reads as brand.
   background: "oklch(0.97 0.003 250)"
   foreground: "oklch(0.20 0.012 250)"
   card: "oklch(0.99 0.002 250)"
@@ -21,6 +24,10 @@ colors:
   accent-foreground: "oklch(0.33 0.09 138)"
   destructive: "oklch(0.46 0.20 30.74)"
   destructive-foreground: "oklch(0.99 0 0)"
+  success: "oklch(0.46 0.12 165)"
+  success-foreground: "oklch(0.99 0 0)"
+  warning: "oklch(0.46 0.13 62)"
+  warning-foreground: "oklch(0.99 0 0)"
   border: "oklch(0.90 0.005 250)"
   input: "oklch(0.90 0.005 250)"
   ring: "oklch(0.55 0.13 138)"
@@ -44,6 +51,10 @@ colors:
   accent-foreground: "oklch(0.92 0.05 138)"
   destructive: "oklch(0.50 0.20 27.50)"
   destructive-foreground: "oklch(0.99 0 0)"
+  success: "oklch(0.50 0.13 165)"
+  success-foreground: "oklch(0.99 0 0)"
+  warning: "oklch(0.50 0.14 62)"
+  warning-foreground: "oklch(0.99 0 0)"
   border: "oklch(0.27 0.006 250)"
   input: "oklch(0.30 0.006 250)"
   ring: "oklch(0.62 0.14 138)"
@@ -290,7 +301,9 @@ All token values live in this file (YAML above). The implementation lives in `ap
 
 Neutral chrome with green as the single accent, built in oklch. The grays are cool-neutral (hue 250 at very low chroma) so the surfaces don't impose a tint on whatever sits on them; green (hue 138) carries `primary`, `ring`, and the `accent` tonal fill, and red carries `destructive`. Full light/dark mode — the same token names switch values automatically via the `.dark` class on `<html>`.
 
-Semantic, role-based naming: `background`, `foreground`, `card`, `primary`, `muted`, `accent`, `destructive`, `border`, `ring` — plus `-foreground` variants for text on colored surfaces.
+Semantic, role-based naming: `background`, `foreground`, `card`, `primary`, `muted`, `accent`, `destructive`, `success`, `warning`, `border`, `ring` — plus `-foreground` variants for text on colored surfaces.
+
+**Intent fills are `destructive`, `success`, and `warning`** — for errors, confirmations, and cautions. All three sit at the same lightness as each other (L0.46 light / L0.50 dark), so a white label clears AA on every one; verify contrast once, not per intent. `success` is emerald (hue 165) rather than the brand green (hue 138) so a status message never reads as brand emphasis — the two are visibly distinct side by side. Use intents for state only; `primary` remains the sole brand accent.
 
 See `tokens.md` for the CSS structure, Tailwind mapping, and allowed classes.
 

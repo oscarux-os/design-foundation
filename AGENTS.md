@@ -18,8 +18,7 @@ Before building a new page, component, or section — read the relevant files in
 7. **`motion.md`** — Motion principles and patterns.
 8. **`transitions.md`** — State changes between UI elements and routes.
 9. **`grammar-and-style.md`** — Voice, tone, and copy rules.
-10. **`components.md`** — shadcn patterns and CVA structure for more complex cases.
-11. **`styleguide.md`** — Living style guide page structure. Every new component and block must be added here.
+10. **`styleguide.md`** — Living style guide page structure. Every new component and block must be added here.
 
 ---
 
@@ -57,5 +56,5 @@ If you are unsure which component to use, which layout pattern fits, or how some
 | Motion | `motion.md` | Snappy, fluid, intuitive principles |
 | Transitions | `transitions.md` | State changes, route transitions |
 | Copy | `grammar-and-style.md` | Voice, tone, UI copy rules |
-| Components | `components.md` | shadcn + CVA patterns |
+| Components | `DESIGN.md` → Components | Per-component tokens, control size ladder, states, focus ring |
 | Style guide | `styleguide.md` | `/style-guide` route, components + blocks tabs |
